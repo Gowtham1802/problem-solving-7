@@ -97,3 +97,107 @@ for (var x=0; x<=15; x++) {
     console.log(x + " is odd");
   }
 }
+
+
+
+// 15. Write a JavaScript conditional statement to find the largest of five numbers.Display an alert box to show the results.Sample numbers : -5, -2, -6, 0, -1 Output : 0
+
+
+const numbers = [-5, -2, -6, 0, -1];
+let largest = numbers[0];
+
+for (let i = 1; i < numbers.length; i++) {
+  if (numbers[i] > largest) {
+    largest = numbers[i];
+  }
+}
+
+alert('The largest number is: ' + largest);
+
+
+
+// 17. Write a JavaScript program to check whether a given number exists in the range 40..10000. For example 40 presents in 40 and 4000.
+
+function test_digit(x, y, n) {    
+  if (n < 40 || n > 10000){
+    return false;
+  }
+  else{
+    if (n >= x && n <= y){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+}
+console.log(test_digit(40, 4000, 45));  
+console.log(test_digit(80, 320, 79));  
+console.log(test_digit(89, 4000, 30));
+
+
+
+// 18. Write a JavaScript program to compute the exponent of a number. Note : The exponent of a number says how many times the base number is used as a factor.
+// 8 2 = 8 x 8 = 64. Here 8 is the base and 2 is the exponent.
+
+
+var exponent = function(a, n) {
+  if (n === 0) {
+    return 1;
+  }
+  else {
+    return a * exponent(a, n-1);
+  }
+};
+
+console.log(exponent(8, 2));
+
+
+
+// 19.Write a JavaScript function that takes an array of numbers and finds the second lowest and second greatest numbers, respectively.Sample array : [1,2,3,4,5] Expected Output : 2,4
+
+
+function SecondGreatestLowest(myArr){
+  myArr.sort(function(x,y){
+    return x-y;
+  });
+  var myNum = [myArr[0]];
+  var result = [];
+  
+  for(var j=1; j < myArr.length; j++)
+  {
+    if(myArr[j-1] !== myArr[j])
+    {
+      myNum.push(myArr[j]);
+    }
+  }
+    result.push(myNum[1],myNum[myNum.length-2]);
+  return result.join(',');
+  }
+
+console.log(SecondGreatestLowest([1,2,3,4,5]));
+
+
+
+
+// 20. Write a JavaScript program that accepts a string as input and swaps the case of each character. For example if you input &#39;The Quick Brown Fox&#39; the output should be &#39;tHE qUICK bROWN fOX&#39;.
+
+
+function swapCase(inputString) {
+  let result = '';
+
+  for (let i = 0; i < inputString.length; i++) {
+    const char = inputString.charAt(i);
+    if (char === char.toUpperCase()) {
+      result += char.toLowerCase();
+    } else {
+      result += char.toUpperCase();
+    }
+  }
+
+  return result;
+}
+
+const input = 'Gowtham Is a Full Stack Developer';
+const swappedString = swapCase(input);
+console.log(swappedString);
